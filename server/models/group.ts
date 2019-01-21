@@ -9,8 +9,8 @@ import mongoosePaginate from 'mongoose-paginate';
 */
 export interface IGroupModel extends Document {
  _id: Types.ObjectId;
- name: String,
- members: [Types.ObjectId];
+ name?: String,
+ members?: [Types.ObjectId];
  createdAt ? : Date;
  updatedAt ? : Date;
 }
