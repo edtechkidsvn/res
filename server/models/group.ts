@@ -9,6 +9,7 @@ import mongoosePaginate from 'mongoose-paginate';
 */
 export interface IGroupModel extends Document {
  _id: Types.ObjectId;
+ name: String,
  members: [Types.ObjectId];
  createdAt ? : Date;
  updatedAt ? : Date;
@@ -22,6 +23,7 @@ export interface IGroupPage {
 }
 
 const GroupSchema = new Schema({
+  name: String,
   members: [{
     type: Schema.Types.ObjectId,
     ref: "User"
