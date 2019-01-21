@@ -7,6 +7,10 @@ basePath: /api/v1
 tags:
   - name: Examples
     description: Simple example endpoints
+  - name: Users
+    description: Users
+  - name: Groups
+    description: Groups
   - name: Specification
     description: The swagger API specification
 
@@ -26,8 +30,199 @@ definitions:
       name:
         type: string
         example: no_stress
+  UserBody:
+    type: object
+    title: User
+    required:
+      - name
+      - email
+    properties:
+      name:
+        type: string
+        example: huynq
+      email:
+        type: string
+        example: huynq.work@gmail.com
+  GroupBody:
+    type: object
+    title: Group
+    required:
+      - members
+    properties:
+      members:
+        type: array
+        example: []
 
 paths:
+  /users:
+    get:
+      tags:
+        - Users
+      description: Fetch all users
+      parameters:
+        - name: _q
+          in: query
+          type: string
+        - name: _start
+          in: query
+          type: number
+          example: 0
+        - name: _end
+          in: query
+          type: number
+          example: 10
+        - name: _sort
+          in: query
+          type: string
+          example: name
+        - name: _order
+          in: query
+          type: string
+          example: DESC
+      responses:
+        200:
+          description: Returns all users
+    post:
+      tags:
+        - Users
+      description: Create new user
+      parameters:
+        - name: user
+          in: body
+          type: object
+          schema:
+            ref: '#/definitions/UserBody'
+      responses:
+        200:
+          description: Created user
+  /users/{_id}:
+    get:
+      tags:
+        - Users
+      description: Fetch one user
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Fetched user
+    put:
+      tags:
+        - Users
+      description: Update one user
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          type: string
+        - name: user
+          in: body
+          type: object
+          schema:
+            $ref: '#/definitions/UserBody'
+      responses:
+        200:
+          description: Updated user
+    
+    delete:
+      tags:
+        - Users
+      description: Delete one user
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Deletion status
+  /groups:
+    get:
+      tags:
+        - Groups
+      description: Fetch all groups
+      parameters:
+        - name: _q
+          in: query
+          type: string
+        - name: _start
+          in: query
+          type: number
+          example: 0
+        - name: _end
+          in: query
+          type: number
+          example: 10
+        - name: _sort
+          in: query
+          type: string
+          example: name
+        - name: _order
+          in: query
+          type: string
+          example: DESC
+      responses:
+        200:
+          description: Returns all groups
+    post:
+      tags:
+        - Groups
+      description: Create new group
+      parameters:
+        - name: group
+          in: body
+          type: object
+          schema:
+            ref: '#/definitions/GroupBody'
+      responses:
+        200:
+          description: Created group
+  /groups/{_id}:
+    get:
+      tags:
+        - Groups
+      description: Fetch one group
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Fetched user
+    
+    put:
+      tags:
+        - Groups
+      description: Update one group
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          type: string
+        - name: group
+          in: body
+          type: object
+          schema:
+            $ref: '#/definitions/GroupBody'
+      responses:
+        200:
+          description: Updated group
+    
+    delete:
+      tags:
+        - Groups
+      description: Delete one group
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Deletion status
   /examples:
     get:
       tags:
