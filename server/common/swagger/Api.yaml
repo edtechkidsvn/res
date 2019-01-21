@@ -46,14 +46,10 @@ definitions:
   GroupBody:
     type: object
     title: Group
-    required:
-      - members
-      - name
     properties:
       name:
         type: string
         example: Pubg clan
-      
       members:
         type: array
         example: []
