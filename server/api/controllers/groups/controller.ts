@@ -32,6 +32,7 @@ export class Controller {
     GroupService.byId(req.params._id).then(r => res.json(r));
   }
   update(req: Request, res: Response): void {
+    console.log("abc");
     GroupService.update(req.params._id, req.body).then(r => res.json(r));
   }
   delete(req: Request, res: Response): void {

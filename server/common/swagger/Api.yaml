@@ -52,7 +52,9 @@ definitions:
         example: Pubg clan
       members:
         type: array
-        example: []
+        items:
+          type: string
+          example: ""
 
 paths:
   /users:
