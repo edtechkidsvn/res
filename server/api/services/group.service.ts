@@ -17,7 +17,7 @@ export class GroupService {
   }
 
   byId(_id: String): Promise<IGroupModel> {
-    return Group.findById(_id);
+    return Group.findById(_id).populate("members");
   }
 
   create(groupBody): Promise<IGroupModel> {
