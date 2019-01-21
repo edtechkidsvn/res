@@ -8,7 +8,7 @@ export default function routes(app: Application): void {
   app.use(cors({
     origin: ["http://localhost:3000", "https://tkres-app.herokuapp.com"],
     exposedHeaders: ["X-Total-Count"],
-    credentials: false,
+    credentials: true,
   }));
   app.use('/api/v1/examples', examplesRouter);
   app.use('/api/v1/users', usersRouter);
