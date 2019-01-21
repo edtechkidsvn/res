@@ -6,8 +6,9 @@ import cors from 'cors';
 
 export default function routes(app: Application): void {
   app.use(cors({
-    origin: "*",
-    exposedHeaders: ["X-Total-Count"]
+    origin: "*://*",
+    exposedHeaders: ["X-Total-Count"],
+    credentials: false,
   }));
   app.use('/api/v1/examples', examplesRouter);
   app.use('/api/v1/users', usersRouter);
