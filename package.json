@@ -21,6 +21,7 @@
     "mongoose": "^5.4.1",
     "pino": "^5.8.1",
     "nodemon": "^1.18.9",
+    "ts-node": "^7.0.1",
     "pino-pretty": "^2.5.0",
     "swagger-express-middleware": "^1.1.1"
   },
