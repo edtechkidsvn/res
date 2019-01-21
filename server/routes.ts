@@ -6,7 +6,7 @@ import cors from 'cors';
 
 export default function routes(app: Application): void {
   app.use(cors({
-    origin: "*",
+    origin: ["http://localhost:3000", "https://tkres-app.herokuapp.com"],
     exposedHeaders: ["X-Total-Count"],
     credentials: false,
   }));
