@@ -5,7 +5,8 @@ import groupsRouter from './api/controllers/groups/router';
 import cors from 'cors';
 
 export default function routes(app: Application): void {
-  app.options('*', cors({
+  app.use(cors({
+    origin: "*",
     exposedHeaders: ["X-Total-Count"]
   }));
   app.use('/api/v1/examples', examplesRouter);
